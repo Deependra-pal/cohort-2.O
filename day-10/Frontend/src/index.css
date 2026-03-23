@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.notes {
+  height: 100%;
+  width: 100%;
+  padding: 20px 30px;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.note {
+  padding-inline: 20px;
+  background-color: #6a6767;
+  padding-block: 10px;
+  max-width: 250px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.note p {
+  font-size: 20px;
+}
+
+.notes .create-note form {
+  width: 300px;
+  background-color: gery;
+  border-radius: 20px;
+  background-color: green;
+  padding-inline: 20px;
+  padding-block: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.notes .create-note input {
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+}
+
+.notes .create-note button {
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: greenyellow;
+  font-size: 18px;
+}
+
+.notes .create-note button:active {
+  scale: 0.97;
+}
+
+.notes .buttons{
+  display: flex;
+  justify-content: space-between;
+}
