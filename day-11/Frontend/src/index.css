@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  background-color: #494949;
+}
+
+.note {
+  background-color: #908787;
+  width: 250px;
+  border-radius: 20px;
+  padding: 10px 10px;
+  text-align: center;
+}
+
+.note h2 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.note p {
+  padding: 5px 5px;
+  font-size: 18px;
+}
+
+.note .btns {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px 5px;
+}
+.note .btns button {
+  padding: 5px 8px;
+}
+
+.create-note {
+  width: 300px;
+  background-color: #908787;
+  border-radius: 10px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.create-note input {
+  padding: 8px 10px;
+  font-size: 16px;
+}
+
+.create-note button {
+  padding: 5px 8px;
+  background-color: rgb(47, 129, 47);
+  border-radius: 10px;
+  padding: 10px 0px;
+  font-size: 14px;
+  border: none;
+}
+
+.create-note button:active {
+  scale: 0.97;
+}
+
+.main {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
