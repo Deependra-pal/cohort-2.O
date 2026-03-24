@@ -10,7 +10,7 @@ const App = () => {
 
   // Fetch notes
   const fetchNotes = async () => {
-    const response = await axios.get("http://localhost:8000/api/notes");
+    const response = await axios.get("https://cohort-2-o-9d47.onrender.com/api/notes");
     const { data } = await response;
     setNotes(data.notes);
   };
@@ -34,7 +34,7 @@ const App = () => {
 
     if (isEditing) {
       axios
-        .put(`http://localhost:8000/api/notes/${currentNote._id}`, {
+        .put(`https://cohort-2-o-9d47.onrender.com/${currentNote._id}`, {
           title: title.value,
           description: description.value,
         })
@@ -46,7 +46,7 @@ const App = () => {
         });
     } else {
       axios
-        .post("http://localhost:8000/api/notes", {
+        .post("https://cohort-2-o-9d47.onrender.com/api/notes", {
           title: title.value,
           description: description.value,
         })
