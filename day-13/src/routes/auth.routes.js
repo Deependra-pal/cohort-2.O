@@ -2,7 +2,7 @@ const express = require("express");
 const userModel = require("../models/user.model");
 const authRouter = express.Router();
 const JWT = require("jsonwebtoken");
-const crypto = require('crypto')
+const crypto = require('crypto'); 
 
 authRouter.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
