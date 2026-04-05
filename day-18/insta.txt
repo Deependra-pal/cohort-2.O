@@ -1,0 +1,6 @@
+post {
+    caption, 
+    image_url,
+    user.Id,
+    CreatedAt : date 
+}

@@ -6,11 +6,11 @@ const multer = require("multer")
 const upload = multer( { storage:multer.memoryStorage() })
 
 
-postRouter.post("/",upload.single("image"),createPostController);
+postRouter.post("/",upload.single("image"),createPostController );
 
 
 
 
 
-module.exports = postRouter 
+module.exports = postRouter
 
