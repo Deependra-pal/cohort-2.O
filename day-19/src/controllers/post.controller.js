@@ -8,9 +8,9 @@ const imagekit = new ImageKit({
 }); 
 
 async function createPostController(req, res) {
- 
+  console.log(req.body, req.file);
 
-  const token = req.cookies.token; 
+  const token = req.cookies.token;
 
   if (!token) {
     return res.status(401).json({
@@ -46,4 +46,41 @@ async function createPostController(req, res) {
   });
 }
 
-module.exports = createPostController;
+async function getPostController(req,res){
+
+  const token = req.cookies.token;
+
+  if(!token){
+    return res.status(401).json({
+      message : "Invalid token"
+    })
+  }
+
+  const decoded = null
+   try{
+     decoded = jwt.verify(token,JWT_SECRET_KEY,)
+   }catch(err){
+    return res.status(401).json({
+      message : "token Invalid"
+    })
+   }
+
+   const userId = decoded.id
+
+   const posts = await postModel.findById({
+    user : userId
+   })
+
+   res.status(200).json({
+     message : "Posts fetch sucessfully",
+     posts
+   })
+
+
+}
+ 
+
+module.exports = { 
+  createPostController,
+  getPostController
+ }
