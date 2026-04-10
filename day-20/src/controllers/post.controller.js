@@ -8,24 +8,6 @@ const imagekit = new ImageKit({
 });
 
 async function createPostController(req, res) {
-  const token = req.cookies.token;
-
-  if (!token) {
-    return res.status(401).json({
-      message: "Unauthorized access",
-    });
-  }
-
-  let decoded = null;
-
-  try {
-    decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-  } catch (err) {
-    return res.status(401).json({
-      message: "user not authorized",
-    });
-  }
-
   const file = await imagekit.files.upload({
     file: await toFile(Buffer.from(req.file.buffer), "file"),
     fileName: "Test",
@@ -35,7 +17,7 @@ async function createPostController(req, res) {
   const post = await postModel.create({
     caption: req.body.caption,
     img_url: file.url,
-    user: decoded.Id,
+    user: req.user.Id,
   });
 
   res.status(201).json({
@@ -45,27 +27,7 @@ async function createPostController(req, res) {
 }
 
 async function getPostController(req, res) {
-  const token = req.cookies.token;
-
-  if (!token) {
-    return res.status(401).json({
-      message: "token invalid ",
-    });
-  }
-
-  let decoded = null;
-
-  try {
-    decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-  } catch (err) {
-    return res.status(401).json({
-      message: "Invalid Token",
-    });
-  }
-
-  const userId = decoded.id;
-
-  console.log(decoded);
+  const userId = req.user.Id;
 
   const posts = await postModel.find({
     user: userId,
@@ -77,61 +39,36 @@ async function getPostController(req, res) {
   });
 }
 
+async function getPostDeatilsController(req, res) {
+  const userId = req.user.Id;
+   
 
-async function getPostDeatilsController(req,res) {
+  const postId = req.params.postId;
 
-  const token = req.cookies.token 
+  const post = await postModel.findById(postId);
 
-  if(!token){
-    return res.status(401).json({
-      message : "UnAuthorized Acess"
-    })
-  }
-
-  let decoded = null
-
-  try{
-       decoded = jwt.verify(token , process.env.JWT_SECRET_KEY)
-  }catch(err){
-    return res.status(401).json({
-      message : "invalid token"
-    })
-  }
-
-  const userId = decoded.id
-  const postId = req.params.postId
-
-  const post = await postModel.findById(postId)
-
-
-  if(!post){
+  if (!post) {
     return res.status(404).json({
-        message : "Post not found "
-    })
+      message: "Post not found ",
+    });
   }
 
-  const isvaliduser = post.user === userId 
+  const isvaliduser = post.user.toString( ) === userId;
 
-
-
-  if(!isvaliduser){
+  if (!isvaliduser) {
     return res.status(403).json({
-      message : "Forbidden Content."
-    })
+      message: "Forbidden Content.",
+    });
   }
 
   return res.status(200).json({
-    message : "Post fetch ssucessfully",
-    post
-  })
+    message: "Post fetch ssucessfully",
+    post,
+  });
 }
-
-
-
-
 
 module.exports = {
   createPostController,
   getPostController,
-  getPostDeatilsController
+  getPostDeatilsController,
 };
