@@ -20,4 +20,4 @@ postRouter.get("/details/:postId", userIdentify , postController.getPostDeatilsC
  
 
 
-module.exports = postRouter
+module.exports = postRouter 
