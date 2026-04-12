@@ -62,7 +62,9 @@ src/
 - Day 16: Instagram clone start  
 - Day 17: File upload (Multer + ImageKit)  
 - Day 19: User-specific APIs (JWT + cookies)  
-- Day 20: Middleware concept  
+- Day 20: Middleware concept
+- Day 21 : Edge Collection
+
 
 *(Continuing...)*
 
