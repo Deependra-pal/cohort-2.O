@@ -64,6 +64,8 @@ src/
 - Day 19: User-specific APIs (JWT + cookies)  
 - Day 20: Middleware concept
 - Day 21 : Edge Collection
+- day 22 : Frontend Setup
+- day 23 : Fronted SetUp flow 4 pillars
 
 
 *(Continuing...)*
