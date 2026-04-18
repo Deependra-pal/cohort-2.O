@@ -21,14 +21,16 @@ export const useAuth = () => {
   };
 
   const handleRegister = async (username, password, email) => {
-    
+
     setLoading(true);
 
     const response = await register(username, password, email);
 
     setUser(response.data);
 
+
     setLoading(false);
+    
   };
 
   return { user, loading, handleLogin, handleRegister };

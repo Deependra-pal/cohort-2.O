@@ -58,7 +58,7 @@ async function loginController(req,res) {
 
        const user = await userModel.findOne({
            $or : [{email},{username}]
-       });
+       }).select("+password")
 
        if(!user){
         return res.status(400).json({
@@ -66,7 +66,7 @@ async function loginController(req,res) {
         })
        }
   
-      const isPasswordValid = await bcrypt.compare(password, user.password)
+      const isPasswordValid = await bcrypt.compare(password , user.password)
 
       if(!isPasswordValid){
         return res.status(401).json({
