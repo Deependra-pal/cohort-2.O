@@ -2,10 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
   .feed {
     max-width: 250px;
     width: 100%;
+    
 
     .posts {
       width: 100%;

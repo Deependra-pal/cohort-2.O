@@ -31,6 +31,8 @@ postRouter.get("/details/:postId", userIdentify , postController.getPostDeatilsC
 // description - like a post
  
  postRouter.post("/like/:postid" , userIdentify , postController.likePostController)
+ postRouter.post("/unlike/:postid" , userIdentify , postController.unlikePostController)
+
 
 //  @route GET / pai/post/feed
 // description :- get all the post create in th DB
