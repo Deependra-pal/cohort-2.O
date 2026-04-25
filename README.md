@@ -66,7 +66,9 @@ src/
 - Day 21 : Edge Collection
 - day 22 : Frontend Setup
 - day 23 : Fronted SetUp flow 4 pillars
-- day 24 : Moodify project setup
+- day 24 : complere instaClone
+- day 25 : Moodify project setup
+- 
 
 
 *(Continuing...)*
