@@ -96,9 +96,6 @@ async function loginController(req, res) {
 }
 
 async function getMeController(req, res) {
-  const id = req.user;
-  console.log(id);
-
   const user = await userModel.findById(req.user.id);
 
   res.status(200).json({
@@ -108,13 +105,12 @@ async function getMeController(req, res) {
 }
 
 async function logoutUser(req, res) {
-
-  const token = req.cookies.token; 
+  const token = req.cookies.token;
 
   res.clearCookie("token");
 
   await blacklistModel.create({
-    token
+    token,
   });
 
   res.status(200).json({
@@ -122,10 +118,9 @@ async function logoutUser(req, res) {
   });
 }
 
-
 module.exports = {
   registerController,
   loginController,
   getMeController,
-  logoutUser
+  logoutUser,
 };
