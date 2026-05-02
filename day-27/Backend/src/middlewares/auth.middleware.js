@@ -1,18 +1,18 @@
 const blacklistModel = require("../models/blacklist.model");
 const userModel = require("../models/user.model");
 const jwt = require("jsonwebtoken");
-const redis = require("../config/cache")
+const redis = require("../config/cache");
 
 async function authUser(req, res, next) {
   const token = req.cookies.token;
 
   if (!token) {
-    return res.status(401).josn({
+    return res.status(401).json({
       message: "token not provided",
     });
   }
 
-  const isBlackListToken = await redis.get(token)
+  const isBlackListToken = await redis.get(token);
 
   if (isBlackListToken) {
     return res.status(401).json({
@@ -32,7 +32,6 @@ async function authUser(req, res, next) {
     });
   }
 }
-
 
 module.exports = {
   authUser,
