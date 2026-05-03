@@ -5,7 +5,6 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "../auth.Context";
 
 export const useAuth = () => {
-
   const context = useContext(AuthContext);
 
   const { user, setUser, loading, setLoading } = context;
@@ -25,7 +24,7 @@ export const useAuth = () => {
   }
 
   async function handleGetMe() {
-    setLoading(true); 
+    setLoading(true);
     const data = await getMe();
     setUser(data.user);
     setLoading(false);

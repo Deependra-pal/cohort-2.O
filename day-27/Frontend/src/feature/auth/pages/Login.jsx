@@ -6,7 +6,6 @@ import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router";
 
 const Login = () => {
-  
   const navigate = useNavigate();
 
   const { loading, handleLogin } = useAuth();
@@ -15,10 +14,11 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   async function handleSubmit(e) {
+    e.preventDefault();
 
-    e.preveventDefault();
+    await handleLogin({ email, password });
+    console.log("user login sucessfully");
 
-    await handleLogin({ email, passsword });
     navigate("/");
   }
 
@@ -30,7 +30,7 @@ const Login = () => {
           <FormGroup
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            label="email"
+            label="Email"
             placeholder="Enter your email"
           />
           <FormGroup

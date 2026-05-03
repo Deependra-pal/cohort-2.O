@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import "../style/register.scss";
 import FormGroup from "../components/FormGroup";
 import { Link } from "react-router";
@@ -17,22 +17,47 @@ const Register = () => {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    await handleRegister({username,email,password});
-    navigate("/");
+    await handleRegister({ username, email, password })
+    
+    navigate("/")
   }
 
   return (
     <main className="register-page">
       <div className="form-container">
         <h1>Register</h1>
+
         <form onSubmit={handleSubmit}>
-          <FormGroup label="Name" placeholder="Enter your Name" />
-          <FormGroup label="email" placeholder="Enter your email" />
-          <FormGroup label="password" placeholder="Enter your password" />
+          <FormGroup
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+            label="Name"
+            placeholder="Enter your Name"
+          />
+
+          <FormGroup
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            label="email"
+            placeholder="Enter your email"
+          />
+
+          <FormGroup
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            label="password"
+            placeholder="Enter your password"
+          />
+
           <button className="button" type="submit">
             Register
-            </button>
-            
+          </button>
         </form>
         <p>
           Already have an account ? <Link to="/login">Login here</Link>

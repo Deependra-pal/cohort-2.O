@@ -5,7 +5,8 @@ import "./feature/shared/style/global.scss"
 import { AuthProvider } from "./feature/auth/auth.Context.jsx";
 
 const App = () => {
- return ( <AuthProvider> 
+ return (
+   <AuthProvider> 
     <RouterProvider router={router} />;
   </AuthProvider>
  )
